@@ -1,5 +1,6 @@
 import { format } from 'date-fns'
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import { getPostBySlug, getAllPosts } from '../../data/blogPosts'
@@ -101,12 +102,12 @@ export default function ReviewPage({ params }: ReviewPageProps) {
 
           {/* Back to Reviews */}
           <div className="mt-12">
-            <a
+            <Link
               href="/reviews"
               className="inline-flex items-center text-popcorn-600 hover:text-popcorn-700 font-medium"
             >
               ← Back to All Reviews
-            </a>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import Logo from './Logo'
+import Link from 'next/link'
 
 interface HeaderProps {
   currentPage?: 'home' | 'reviews'
@@ -13,7 +14,7 @@ export default function Header({ currentPage = 'home' }: HeaderProps) {
             <Logo size="lg" rounded />
           </div>
           <nav className="hidden md:flex space-x-8">
-            <a
+            <Link
               href="/"
               className={`transition-colors ${
                 currentPage === 'home'
@@ -22,8 +23,8 @@ export default function Header({ currentPage = 'home' }: HeaderProps) {
               }`}
             >
               Home
-            </a>
-            <a
+            </Link>
+            <Link
               href="/reviews"
               className={`transition-colors ${
                 currentPage === 'reviews'
@@ -32,7 +33,7 @@ export default function Header({ currentPage = 'home' }: HeaderProps) {
               }`}
             >
               All Reviews
-            </a>
+            </Link>
           </nav>
         </div>
       </div>

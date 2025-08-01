@@ -1,5 +1,6 @@
 import { format } from 'date-fns'
 import Image from 'next/image'
+import Link from 'next/link'
 import { BlogPost } from '../data/blogPosts'
 
 interface MovieCardProps {
@@ -9,7 +10,7 @@ interface MovieCardProps {
 
 export default function MovieCard({ post, showBoxOffice = true }: MovieCardProps) {
   return (
-    <a href={`/reviews/${post.slug}`} className="movie-card block hover:shadow-lg transition-shadow duration-300">
+    <Link href={`/reviews/${post.slug}`} className="movie-card block hover:shadow-lg transition-shadow duration-300">
       <article>
         <div className="relative h-48 bg-gray-200">
           <Image
@@ -62,6 +63,6 @@ export default function MovieCard({ post, showBoxOffice = true }: MovieCardProps
           </div>
         </div>
       </article>
-    </a>
+    </Link>
   )
 }

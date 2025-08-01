@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import Footer from './components/Footer'
 import MovieCard from './components/MovieCard'
+import Link from 'next/link'
 import { getFeaturedPosts } from './data/blogPosts'
 
 export default function Home() {
@@ -19,9 +20,9 @@ export default function Home() {
             <a href='https://www.youtube.com/@PopcornRings' target='_blank' rel="noopener noreferrer" className="btn-primary bg-white text-popcorn-600 hover:bg-gray-100">
               YouTube Channel
             </a>
-            <a href='/reviews' className="btn-primary bg-transparent border-2 border-white hover:bg-white hover:text-popcorn-600">
+            <Link href='/reviews' className="btn-primary bg-transparent border-2 border-white hover:bg-white hover:text-popcorn-600">
               All Reviews
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -36,9 +37,9 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-12">
-            <a href="/reviews" className="btn-primary bg-popcorn-600 text-white hover:bg-popcorn-700 px-8 py-3 rounded-lg font-medium transition-colors">
+            <Link href="/reviews" className="btn-primary bg-popcorn-600 text-white hover:bg-popcorn-700 px-8 py-3 rounded-lg font-medium transition-colors">
               View All Reviews
-            </a>
+            </Link>
           </div>
         </div>
       </section>
