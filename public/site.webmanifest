@@ -4,12 +4,12 @@
   "description": "Movie Reviews & Box Office Collections",
   "icons": [
     {
-      "src": "/logo-round.png",
+      "src": "logo-round.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "/logo-round.png",
+      "src": "logo-round.png",
       "sizes": "180x180",
       "type": "image/png"
     }

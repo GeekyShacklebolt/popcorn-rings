@@ -11,24 +11,24 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/favicon.ico',
+        url: 'favicon.ico',
         sizes: 'any',
       },
       {
-        url: '/logo-round.png',
+        url: 'logo-round.png',
         sizes: '32x32',
         type: 'image/png',
       },
     ],
     apple: [
       {
-        url: '/logo-round.png',
+        url: 'logo-round.png',
         sizes: '180x180',
         type: 'image/png',
       },
     ],
   },
-  manifest: '/site.webmanifest',
+  manifest: 'site.webmanifest',
 }
 
 export default function RootLayout({
@@ -38,7 +38,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-
+      <head>
+        <link rel="icon" href="favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="logo-round.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="logo-round.png" />
+        <link rel="manifest" href="site.webmanifest" />
+      </head>
       <body className={inter.className}>
         <div className="min-h-screen bg-gray-50">
           {children}
