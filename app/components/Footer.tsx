@@ -7,7 +7,7 @@ export default function Footer() {
             Popcorn Rings — where every film is a potential blockbuster... or a meme.
           </p>
           <div className="text-sm text-white/70">
-            © 2024 Popcorn Rings. All rights reserved.
+            © 2025 Popcorn Rings. All rights reserved.
           </div>
         </div>
       </div>
