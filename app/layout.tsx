@@ -35,6 +35,19 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href={getAssetPath('/icon-32x32.png')} />
         <link rel="apple-touch-icon" sizes="180x180" href={getAssetPath('/apple-touch-icon.png')} />
         <link rel="manifest" href={getAssetPath('/site.webmanifest')} />
+
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYYZFLSFTB"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-RYYZFLSFTB');
+            `,
+          }}
+        />
       </head>
       <body className={inter.className}>
         <div className="min-h-screen bg-gray-50">
