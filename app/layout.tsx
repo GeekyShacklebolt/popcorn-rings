@@ -15,19 +15,14 @@ export const metadata: Metadata = {
         sizes: 'any',
       },
       {
-        url: '/icon-16x16.png',
-        sizes: '16x16',
-        type: 'image/png',
-      },
-      {
-        url: '/icon-32x32.png',
+        url: '/logo-round.png',
         sizes: '32x32',
         type: 'image/png',
       },
     ],
     apple: [
       {
-        url: '/apple-touch-icon.png',
+        url: '/logo-round.png',
         sizes: '180x180',
         type: 'image/png',
       },

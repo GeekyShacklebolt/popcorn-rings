@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/popcorn-rings',
+  basePath: process.env.NODE_ENV === 'production' ? '/popcorn-rings' : '',
   images: {
     unoptimized: true
   }
