@@ -1,4 +1,5 @@
 import { format } from 'date-fns'
+import Image from 'next/image'
 import { BlogPost } from '../data/blogPosts'
 
 interface MovieCardProps {
@@ -11,10 +12,12 @@ export default function MovieCard({ post, showBoxOffice = true }: MovieCardProps
     <a href={`/reviews/${post.slug}`} className="movie-card block hover:shadow-lg transition-shadow duration-300">
       <article>
         <div className="relative h-48 bg-gray-200">
-          <img
+          <Image
             src={post.image}
             alt={post.title}
-            className="w-full h-full object-cover object-top"
+            fill
+            className="object-cover object-top"
+            unoptimized
           />
           <div className="absolute top-4 right-4 bg-popcorn-500 text-white px-2 py-1 rounded text-sm font-medium">
             {post.rating}/5

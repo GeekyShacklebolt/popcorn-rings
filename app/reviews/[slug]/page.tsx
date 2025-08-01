@@ -2,12 +2,21 @@ import { format } from 'date-fns'
 import { notFound } from 'next/navigation'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import { getPostBySlug } from '../../data/blogPosts'
+import { getPostBySlug, getAllPosts } from '../../data/blogPosts'
 
 interface ReviewPageProps {
   params: {
     slug: string
   }
+}
+
+// Generate static params for all possible slugs
+export async function generateStaticParams() {
+  const posts = getAllPosts()
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
 }
 
 export default function ReviewPage({ params }: ReviewPageProps) {
