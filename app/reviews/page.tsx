@@ -1,14 +1,18 @@
-import Link from 'next/link'
 import { format } from 'date-fns'
 import Logo from '../components/Logo'
 
-// Sample reviews data
-const reviews = [
+// Sample blog posts data
+const blogPosts = [
   {
     id: 1,
     title: "Dune: Part Two",
     rating: 4.5,
-    boxOffice: "$282.1M",
+    boxOffice: {
+      total: "$282.1M",
+      domestic: "$145.2M",
+      international: "$136.9M",
+      weeksInRelease: 8
+    },
     releaseDate: "2024-03-01",
     genre: "Sci-Fi",
     director: "Denis Villeneuve",
@@ -21,7 +25,12 @@ const reviews = [
     id: 2,
     title: "Poor Things",
     rating: 4.2,
-    boxOffice: "$117.5M",
+    boxOffice: {
+      total: "$117.5M",
+      domestic: "$35.2M",
+      international: "$82.3M",
+      weeksInRelease: 16
+    },
     releaseDate: "2023-12-08",
     genre: "Comedy/Drama",
     director: "Yorgos Lanthimos",
@@ -34,7 +43,12 @@ const reviews = [
     id: 3,
     title: "The Zone of Interest",
     rating: 4.0,
-    boxOffice: "$15.8M",
+    boxOffice: {
+      total: "$15.8M",
+      domestic: "$8.2M",
+      international: "$7.6M",
+      weeksInRelease: 12
+    },
     releaseDate: "2023-12-15",
     genre: "Drama",
     director: "Jonathan Glazer",
@@ -47,7 +61,12 @@ const reviews = [
     id: 4,
     title: "Oppenheimer",
     rating: 4.8,
-    boxOffice: "$950.2M",
+    boxOffice: {
+      total: "$950.2M",
+      domestic: "$326.1M",
+      international: "$624.1M",
+      weeksInRelease: 24
+    },
     releaseDate: "2023-07-21",
     genre: "Biography/Drama",
     director: "Christopher Nolan",
@@ -60,7 +79,12 @@ const reviews = [
     id: 5,
     title: "Barbie",
     rating: 3.8,
-    boxOffice: "$1.45B",
+    boxOffice: {
+      total: "$1.45B",
+      domestic: "$636.2M",
+      international: "$809.8M",
+      weeksInRelease: 24
+    },
     releaseDate: "2023-07-21",
     genre: "Comedy/Adventure",
     director: "Greta Gerwig",
@@ -73,7 +97,12 @@ const reviews = [
     id: 6,
     title: "Killers of the Flower Moon",
     rating: 4.3,
-    boxOffice: "$156.8M",
+    boxOffice: {
+      total: "$156.8M",
+      domestic: "$67.4M",
+      international: "$89.4M",
+      weeksInRelease: 18
+    },
     releaseDate: "2023-10-20",
     genre: "Crime/Drama",
     director: "Martin Scorsese",
@@ -92,18 +121,15 @@ export default function ReviewsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
-              <Logo size="lg" href="/" rounded />
+              <Logo size="lg" rounded />
             </div>
             <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-popcorn-600 transition-colors">
+              <a href="/" className="text-gray-700 hover:text-popcorn-600 transition-colors">
                 Home
-              </Link>
-              <Link href="/reviews" className="text-popcorn-600 font-medium">
-                Reviews
-              </Link>
-              <Link href="/box-office" className="text-gray-700 hover:text-popcorn-600 transition-colors">
-                Box Office
-              </Link>
+              </a>
+              <a href="/reviews" className="text-popcorn-600 font-medium">
+                All Reviews
+              </a>
             </nav>
           </div>
         </div>
@@ -112,78 +138,61 @@ export default function ReviewsPage() {
       {/* Page Header */}
       <section className="bg-gradient-to-r from-popcorn-500 to-popcorn-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">Movie Reviews</h1>
-          <p className="text-xl">Honest, concise reviews of the latest films</p>
+          <h1 className="text-4xl font-bold mb-4">All Movie Reviews</h1>
+          <p className="text-xl">Complete collection of movie reviews and box office insights</p>
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="bg-white py-8 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-            <div className="flex gap-4">
-              <select className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-popcorn-500">
-                <option>All Genres</option>
-                <option>Sci-Fi</option>
-                <option>Drama</option>
-                <option>Comedy</option>
-                <option>Action</option>
-              </select>
-              <select className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-popcorn-500">
-                <option>Sort by Date</option>
-                <option>Sort by Rating</option>
-                <option>Sort by Box Office</option>
-              </select>
-            </div>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search movies..."
-                className="border border-gray-300 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-popcorn-500 w-64"
-              />
-              <svg className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews Grid */}
+      {/* All Blog Posts */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {reviews.map((review) => (
-              <article key={review.id} className="movie-card">
+            {blogPosts.map((post) => (
+              <article key={post.id} className="movie-card">
                 <div className="relative h-48 bg-gray-200">
                   <img
-                    src={review.image}
-                    alt={review.title}
+                    src={post.image}
+                    alt={post.title}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-4 right-4 bg-popcorn-500 text-white px-2 py-1 rounded text-sm font-medium">
-                    {review.rating}/5
+                    {post.rating}/5
                   </div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-gray-500">{review.genre}</span>
-                    <span className="text-sm font-medium text-green-600">{review.boxOffice}</span>
+                    <span className="text-sm text-gray-500">{post.genre}</span>
+                    <span className="text-sm font-medium text-green-600">{post.boxOffice.total}</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{review.title}</h3>
-                  <div className="text-sm text-gray-500 mb-3">
-                    <span>Dir. {review.director}</span>
-                    <span className="mx-2">•</span>
-                    <span>{review.runtime}</span>
+                  <h4 className="text-xl font-bold mb-2">{post.title}</h4>
+                  <p className="text-gray-600 mb-4">{post.excerpt}</p>
+
+                  {/* Box Office Details */}
+                  <div className="bg-gray-50 rounded-lg p-3 mb-4">
+                    <div className="text-sm text-gray-600 mb-2">Box Office Performance</div>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div>
+                        <span className="text-gray-500">Domestic:</span>
+                        <span className="ml-1 font-medium">{post.boxOffice.domestic}</span>
+                      </div>
+                      <div>
+                        <span className="text-gray-500">International:</span>
+                        <span className="ml-1 font-medium">{post.boxOffice.international}</span>
+                      </div>
+                      <div>
+                        <span className="text-gray-500">Weeks:</span>
+                        <span className="ml-1 font-medium">{post.boxOffice.weeksInRelease}</span>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-gray-600 mb-4">{review.excerpt}</p>
+
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-500">
-                      {format(new Date(review.releaseDate), 'MMM dd, yyyy')}
+                      {format(new Date(post.releaseDate), 'MMM dd, yyyy')}
                     </span>
-                    <Link href={`/reviews/${review.id}`} className="text-popcorn-600 hover:text-popcorn-700 font-medium">
-                      Read Full Review →
-                    </Link>
+                    <div className="text-popcorn-600 font-medium">
+                      {post.director} • {post.runtime}
+                    </div>
                   </div>
                 </div>
               </article>
@@ -196,9 +205,8 @@ export default function ReviewsPage() {
       <footer className="bg-gray-800 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">🍿 Popcorn Rings</h3>
             <p className="text-gray-300 mb-6">
-              Your trusted source for movie reviews and box office insights.
+              Popcorn Rings — where every film is a potential blockbuster... or a meme.
             </p>
             <div className="text-sm text-gray-400">
               © 2024 Popcorn Rings. All rights reserved.
