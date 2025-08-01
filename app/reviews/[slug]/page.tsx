@@ -65,9 +65,9 @@ export default function ReviewPage({ params }: ReviewPageProps) {
       {/* Content */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Box Office Performance */}
+          {/* Box Office Collections */}
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Box Office Performance</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Box Office Collections</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center p-4 bg-white rounded-lg border border-gray-100 shadow-sm">
                 <div className="text-2xl font-bold text-popcorn-600 mb-1">{post.boxOffice.total}</div>

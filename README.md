@@ -1,4 +1,4 @@
-# 🍿 Popcorn Rings
+# Popcorn Rings
 
 A simple, elegant movie review and box office tracking blog built with Next.js and deployed on GitHub Pages.
 

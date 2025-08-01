@@ -35,7 +35,7 @@ export default function MovieCard({ post, showBoxOffice = true }: MovieCardProps
           {showBoxOffice && (
             /* Box Office Details */
             <div className="bg-gray-50 rounded-lg p-3 mb-4">
-              <div className="text-sm text-gray-600 mb-2">Box Office Performance</div>
+              <div className="text-sm text-gray-600 mb-2">Box Office Collections</div>
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div>
                   <span className="text-gray-500">Domestic:</span>
