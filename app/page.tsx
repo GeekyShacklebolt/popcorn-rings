@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { format } from 'date-fns'
+import Logo from './components/Logo'
 
 // Sample movie data - in a real app, this would come from a CMS or API
 const featuredMovies = [
@@ -43,7 +44,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
-              <h1 className="text-3xl font-bold text-popcorn-600">🍿 Popcorn Rings</h1>
+              <Logo size="lg" rounded />
             </div>
             <nav className="hidden md:flex space-x-8">
               <Link href="/" className="text-gray-700 hover:text-popcorn-600 transition-colors">
@@ -65,16 +66,18 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-5xl font-bold mb-6">Movie Reviews & Box Office</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Your go-to destination for concise movie reviews and box office collections.
-            No fluff, just the facts you need to know.
+            Not a usual movie site — just fun reviews, random insights, and box office buzz at times.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/reviews" className="btn-primary bg-white text-popcorn-600 hover:bg-gray-100">
+            <Link href='https://www.youtube.com/@PopcornRings' target='_blank' className="btn-primary bg-white text-popcorn-600 hover:bg-gray-100">
+              YouTube Channel
+            </Link>
+            {/* <Link href="/reviews" className="btn-primary bg-white text-popcorn-600 hover:bg-gray-100">
               Read Reviews
             </Link>
             <Link href="/box-office" className="btn-primary bg-transparent border-2 border-white hover:bg-white hover:text-popcorn-600">
               Box Office Data
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>
@@ -142,16 +145,16 @@ export default function Home() {
       <footer className="bg-gray-800 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">🍿 Popcorn Rings</h3>
             <p className="text-gray-300 mb-6">
-              Your trusted source for movie reviews and box office insights.
+              Popcorn Rings — where every film is a potential blockbuster... or a meme.
             </p>
             <div className="text-sm text-gray-400">
-              © 2024 Popcorn Rings. All rights reserved.
+              © 2025 Popcorn Rings. All rights reserved.
             </div>
           </div>
         </div>
       </footer>
+
     </div>
   )
 }

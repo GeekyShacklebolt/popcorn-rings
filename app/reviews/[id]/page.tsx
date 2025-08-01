@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { format } from 'date-fns'
 import { notFound } from 'next/navigation'
+import Logo from '../../components/Logo'
 
 // Sample review data - in a real app, this would come from a CMS or API
 const reviews = [
@@ -61,7 +62,7 @@ export default function ReviewPage({ params }: ReviewPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
-              <Link href="/" className="text-3xl font-bold text-popcorn-600">🍿 Popcorn Rings</Link>
+              <Logo size="lg" href="/" rounded />
             </div>
             <nav className="hidden md:flex space-x-8">
               <Link href="/" className="text-gray-700 hover:text-popcorn-600 transition-colors">
