@@ -1,13 +1,68 @@
 import { format } from 'date-fns'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { Metadata } from 'next'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import { getPostBySlug, getAllPosts } from '../../data/blogPosts'
+import { getAssetPath } from '../../utils/paths'
 
 interface ReviewPageProps {
   params: {
     slug: string
+  }
+}
+
+// Generate metadata for each review page
+export async function generateMetadata({ params }: ReviewPageProps): Promise<Metadata> {
+  const post = getPostBySlug(params.slug)
+
+  if (!post) {
+    return {
+      title: 'Review Not Found',
+    }
+  }
+
+  const description = post.excerpt || `Read our review of ${post.title} - Rating: ${post.rating}/10. Box office collections and detailed analysis.`
+
+  return {
+    title: `${post.title} Review`,
+    description,
+    keywords: `${post.title}, movie review, ${post.genre}, ${post.director}, box office, film analysis, popcorn rings`,
+    openGraph: {
+      title: `${post.title} Review - Popcorn Rings`,
+      description,
+      type: 'article',
+      url: `https://www.shivasaxena.com/popcorn-rings/reviews/${params.slug}`,
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 630,
+          alt: `${post.title} - Movie Review`,
+        },
+      ],
+      publishedTime: post.releaseDate,
+      authors: ['Popcorn Rings'],
+      tags: [post.genre, 'movie review', 'box office'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${post.title} Review - Popcorn Rings`,
+      description,
+      images: [post.image],
+      creator: '@ershivaxena',
+      site: '@ershivaxena',
+    },
+    alternates: {
+      canonical: `/reviews/${params.slug}`,
+    },
+    other: {
+      'article:published_time': post.releaseDate,
+      'article:author': 'Popcorn Rings',
+      'article:section': 'Movie Reviews',
+      'article:tag': post.genre,
+    },
   }
 }
 
@@ -111,6 +166,49 @@ export default function ReviewPage({ params }: ReviewPageProps) {
           </div>
         </div>
       </section>
+
+      {/* Structured Data for Movie Review */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Review",
+            "itemReviewed": {
+              "@type": "Movie",
+              "name": post.title,
+              "director": {
+                "@type": "Person",
+                "name": post.director
+              },
+              "genre": post.genre,
+              "datePublished": post.releaseDate,
+              "duration": post.runtime
+            },
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": post.rating,
+              "bestRating": 10,
+              "worstRating": 1
+            },
+            "author": {
+              "@type": "Organization",
+              "name": "Popcorn Rings"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Popcorn Rings",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.shivasaxena.com/popcorn-rings/logo-round.png"
+              }
+            },
+            "datePublished": post.releaseDate,
+            "reviewBody": post.excerpt,
+            "url": `https://www.shivasaxena.com/popcorn-rings/reviews/${params.slug}`
+          })
+        }}
+      />
 
       <Footer />
     </div>

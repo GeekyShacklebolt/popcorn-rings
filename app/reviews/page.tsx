@@ -1,7 +1,28 @@
+import { Metadata } from 'next'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MovieCard from '../components/MovieCard'
 import { getAllPosts } from '../data/blogPosts'
+
+export const metadata: Metadata = {
+  title: 'All Movie Reviews',
+  description: 'Browse our complete collection of movie reviews, box office analysis, and film insights. Honest reviews and detailed box office collections.',
+  keywords: 'movie reviews, all reviews, film analysis, box office collections, cinema reviews, popcorn rings',
+  openGraph: {
+    title: 'All Movie Reviews - Popcorn Rings',
+    description: 'Browse our complete collection of movie reviews, box office analysis, and film insights.',
+    type: 'website',
+    url: 'https://www.shivasaxena.com/popcorn-rings/reviews',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'All Movie Reviews - Popcorn Rings',
+    description: 'Browse our complete collection of movie reviews, box office analysis, and film insights.',
+  },
+  alternates: {
+    canonical: '/reviews',
+  },
+}
 
 export default function ReviewsPage() {
   return (
