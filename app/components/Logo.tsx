@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 interface LogoProps {
@@ -32,14 +31,10 @@ export default function Logo({
 
   const LogoContent = () => (
     <div className={`flex items-center gap-3 ${className}`}>
-      <Image
+      <img
         src={rounded ? "/logo-round.png" : "/logo.png"}
         alt="Popcorn Rings Logo"
-        width={size === 'sm' ? 32 : size === 'md' ? 40 : size === 'lg' ? 48 : 64}
-        height={size === 'sm' ? 32 : size === 'md' ? 40 : size === 'lg' ? 48 : 64}
-        className={sizeClasses[size]}
-        priority
-        unoptimized
+        className={`${sizeClasses[size]} object-contain`}
       />
       {showText && (
         <span className={`font-bold text-popcorn-600 ${textSizes[size]}`}>
