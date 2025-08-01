@@ -1,117 +1,6 @@
 import { format } from 'date-fns'
 import Logo from '../components/Logo'
-
-// Sample blog posts data
-const blogPosts = [
-  {
-    id: 1,
-    title: "Dune: Part Two",
-    rating: 4.5,
-    boxOffice: {
-      total: "$282.1M",
-      domestic: "$145.2M",
-      international: "$136.9M",
-      weeksInRelease: 8
-    },
-    releaseDate: "2024-03-01",
-    genre: "Sci-Fi",
-    director: "Denis Villeneuve",
-    runtime: "166 min",
-    image: "https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=400&h=300&fit=crop",
-    excerpt: "Denis Villeneuve's epic sci-fi sequel delivers stunning visuals and compelling storytelling.",
-    fullReview: "Dune: Part Two is a masterful continuation of Frank Herbert's epic saga. Villeneuve's direction is impeccable, creating a world that feels both alien and familiar. The visual effects are groundbreaking, and the performances from Timothée Chalamet and Zendaya are outstanding. The film successfully balances intimate character moments with grand spectacle, making it one of the best sci-fi films in recent memory."
-  },
-  {
-    id: 2,
-    title: "Poor Things",
-    rating: 4.2,
-    boxOffice: {
-      total: "$117.5M",
-      domestic: "$35.2M",
-      international: "$82.3M",
-      weeksInRelease: 16
-    },
-    releaseDate: "2023-12-08",
-    genre: "Comedy/Drama",
-    director: "Yorgos Lanthimos",
-    runtime: "141 min",
-    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=300&fit=crop",
-    excerpt: "Emma Stone shines in this bizarre and beautiful tale of rebirth and discovery.",
-    fullReview: "Poor Things is a delightfully weird and wonderful film that showcases Emma Stone's incredible range as an actress. Lanthimos's unique visual style and dark humor create an unforgettable cinematic experience. The film's exploration of identity, freedom, and societal expectations is both thought-provoking and entertaining."
-  },
-  {
-    id: 3,
-    title: "The Zone of Interest",
-    rating: 4.0,
-    boxOffice: {
-      total: "$15.8M",
-      domestic: "$8.2M",
-      international: "$7.6M",
-      weeksInRelease: 12
-    },
-    releaseDate: "2023-12-15",
-    genre: "Drama",
-    director: "Jonathan Glazer",
-    runtime: "105 min",
-    image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=400&h=300&fit=crop",
-    excerpt: "A haunting exploration of evil in its most banal form.",
-    fullReview: "The Zone of Interest is a chilling and innovative take on the Holocaust film. Glazer's decision to focus on the perpetrators rather than the victims creates a unique perspective on evil. The film's minimalist approach and sound design create an atmosphere of dread that lingers long after the credits roll."
-  },
-  {
-    id: 4,
-    title: "Oppenheimer",
-    rating: 4.8,
-    boxOffice: {
-      total: "$950.2M",
-      domestic: "$326.1M",
-      international: "$624.1M",
-      weeksInRelease: 24
-    },
-    releaseDate: "2023-07-21",
-    genre: "Biography/Drama",
-    director: "Christopher Nolan",
-    runtime: "180 min",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
-    excerpt: "Nolan's masterpiece about the father of the atomic bomb is both intimate and epic.",
-    fullReview: "Oppenheimer is Christopher Nolan's crowning achievement. Cillian Murphy delivers a career-defining performance as J. Robert Oppenheimer, capturing the complexity of a man who changed the world forever. The film's technical achievements are matched by its emotional depth, making it a truly unforgettable cinematic experience."
-  },
-  {
-    id: 5,
-    title: "Barbie",
-    rating: 3.8,
-    boxOffice: {
-      total: "$1.45B",
-      domestic: "$636.2M",
-      international: "$809.8M",
-      weeksInRelease: 24
-    },
-    releaseDate: "2023-07-21",
-    genre: "Comedy/Adventure",
-    director: "Greta Gerwig",
-    runtime: "114 min",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
-    excerpt: "A surprisingly deep and entertaining exploration of feminism and identity.",
-    fullReview: "Barbie is much more than a toy commercial. Gerwig's direction and Margot Robbie's performance create a film that's both entertaining and thought-provoking. The film's exploration of gender roles and societal expectations is handled with wit and intelligence, making it accessible to audiences of all ages."
-  },
-  {
-    id: 6,
-    title: "Killers of the Flower Moon",
-    rating: 4.3,
-    boxOffice: {
-      total: "$156.8M",
-      domestic: "$67.4M",
-      international: "$89.4M",
-      weeksInRelease: 18
-    },
-    releaseDate: "2023-10-20",
-    genre: "Crime/Drama",
-    director: "Martin Scorsese",
-    runtime: "206 min",
-    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=300&fit=crop",
-    excerpt: "Scorsese's epic Western is a powerful indictment of American greed and racism.",
-    fullReview: "Killers of the Flower Moon is a powerful and important film that sheds light on a dark chapter of American history. Scorsese's direction is masterful, and the performances from Leonardo DiCaprio and Lily Gladstone are outstanding. The film's length is justified by its scope and ambition."
-  }
-]
+import { getAllPosts } from '../data/blogPosts'
 
 export default function ReviewsPage() {
   return (
@@ -147,13 +36,13 @@ export default function ReviewsPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
+            {getAllPosts().map((post) => (
               <article key={post.id} className="movie-card">
                 <div className="relative h-48 bg-gray-200">
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                   <div className="absolute top-4 right-4 bg-popcorn-500 text-white px-2 py-1 rounded text-sm font-medium">
                     {post.rating}/5
@@ -180,8 +69,8 @@ export default function ReviewsPage() {
                         <span className="ml-1 font-medium">{post.boxOffice.international}</span>
                       </div>
                       <div>
-                        <span className="text-gray-500">Weeks:</span>
-                        <span className="ml-1 font-medium">{post.boxOffice.weeksInRelease}</span>
+                        <span className="text-gray-500">Upto Week:</span>
+                        <span className="ml-1 font-medium">{post.boxOffice.uptoWeek}</span>
                       </div>
                     </div>
                   </div>
