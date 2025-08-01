@@ -1,22 +1,26 @@
 # Popcorn Rings
 
-A simple, elegant movie review and box office tracking blog built with Next.js and deployed on GitHub Pages.
+Not a usual movie site — just fun reviews, random insights, and box office buzz at times.
 
 ## Features
 
 - **Movie Reviews**: Concise, honest reviews of the latest films
 - **Box Office Tracking**: Real-time box office collections and performance data
-- **Responsive Design**: Beautiful, mobile-friendly interface
-- **Static Site Generation**: Fast loading and SEO optimized
-- **GitHub Pages Ready**: Configured for automatic deployment
+- **Responsive Design**: Beautiful, mobile-friendly interface with Tailwind CSS
+- **Static Site Generation**: Fast loading and SEO optimized with `output: export`
+- **GitHub Pages Ready**: Configured for deployment at `/popcorn-rings` subdirectory
+- **Google Analytics**: Integrated tracking for insights
+- **PWA Ready**: Web app manifest for mobile installation
 
 ## Tech Stack
 
 - **Framework**: Next.js 14 with App Router
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS with custom popcorn theme
 - **Language**: TypeScript
-- **Deployment**: GitHub Pages
+- **Deployment**: GitHub Pages with basePath configuration
 - **Date Handling**: date-fns
+- **Analytics**: Google Analytics (gtag)
+- **Static Export**: `output: export` for GitHub Pages compatibility
 
 ## Getting Started
 
@@ -29,7 +33,7 @@ A simple, elegant movie review and box office tracking blog built with Next.js a
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/popcorn-rings.git
+git clone https://github.com/GeekyShacklebolt/popcorn-rings.git
 cd popcorn-rings
 ```
 
@@ -58,72 +62,89 @@ The built files will be in the `out` directory, ready for deployment.
 ```
 popcorn-rings/
 ├── app/                    # Next.js App Router
-│   ├── globals.css        # Global styles with Tailwind
-│   ├── layout.tsx         # Root layout component
-│   ├── page.tsx           # Homepage
+│   ├── components/         # Reusable components
+│   │   ├── Header.tsx     # Navigation header
+│   │   ├── Footer.tsx     # Site footer
+│   │   ├── Logo.tsx       # Logo component
+│   │   └── MovieCard.tsx  # Movie review cards
+│   ├── data/              # Static data
+│   │   └── blogPosts.ts   # Movie reviews data
 │   ├── reviews/           # Reviews pages
-│   │   ├── page.tsx       # Reviews listing
-│   │   └── [id]/          # Individual review pages
-│   └── box-office/        # Box office pages
-│       └── page.tsx       # Box office data
-├── .github/               # GitHub Actions workflow
+│   │   ├── page.tsx       # All reviews listing
+│   │   └── [slug]/        # Individual review pages
+│   │       └── page.tsx   # Dynamic review page
+│   ├── utils/             # Utility functions
+│   │   └── paths.ts       # BasePath utilities
+│   ├── globals.css        # Global styles with Tailwind
+│   ├── layout.tsx         # Root layout with GA
+│   └── page.tsx           # Homepage
 ├── public/                # Static assets
+│   ├── favicon.ico        # Site favicon
+│   ├── logo.png           # Square logo
+│   ├── logo-round.png     # Round logo
+│   ├── icon-*.png         # Various favicon sizes
+│   └── site.webmanifest   # PWA manifest
+├── next.config.js         # Next.js configuration
+├── tailwind.config.js     # Tailwind configuration
 └── package.json           # Dependencies and scripts
 ```
 
+## Configuration
+
+### BasePath Setup
+
+The project is configured for deployment at `/popcorn-rings` subdirectory:
+
+```javascript
+// next.config.js
+const nextConfig = {
+  output: 'export',
+  basePath: process.env.NODE_ENV === 'production' ? '/popcorn-rings' : '',
+  images: {
+    unoptimized: true
+  }
+}
+```
+
+### Static Assets
+
+All static assets use dynamic paths through `utils/paths.ts`:
+- Development: `/logo.png`
+- Production: `/popcorn-rings/logo.png`
+
 ## Deployment
 
-This project is configured for automatic deployment to GitHub Pages using GitHub Actions. The workflow will:
-
-1. Build the Next.js application
-2. Generate static files
-3. Deploy to GitHub Pages
-
-To deploy:
-
-1. Push your code to the `main` branch
-2. GitHub Actions will automatically build and deploy
-3. Your site will be available at `https://www.shivasaxena.com/popcorn-rings`
+This project is configured for deployment to GitHub Pages at `https://www.shivasaxena.com/popcorn-rings/`.
 
 ## Customization
 
 ### Adding New Reviews
 
-Edit the reviews data in the respective page files:
-- `app/page.tsx` - Featured movies on homepage
-- `app/reviews/page.tsx` - All reviews listing
-- `app/reviews/[id]/page.tsx` - Individual review data
+Edit the reviews data in `app/data/blogPosts.ts`:
+
+```typescript
+export const blogPosts: BlogPost[] = [
+  {
+    id: 1,
+    title: "Movie Title",
+    slug: "movie-slug",
+    rating: 9.0,
+    // ... other properties
+  }
+]
+```
 
 ### Styling
 
-The project uses Tailwind CSS with custom popcorn-themed colors. You can modify:
-- `tailwind.config.js` - Color scheme and theme
-- `app/globals.css` - Custom styles and components
+The project uses Tailwind CSS with custom popcorn-themed colors:
+- Primary: `popcorn-500` (#e09c00)
+- Secondary: `popcorn-600`, `popcorn-700`, `popcorn-800`
+- Configure in `tailwind.config.js`
 
-### Content Management
+### Google Analytics
 
-For a production site, consider integrating with:
-- A headless CMS (Strapi, Contentful, etc.)
-- A database (PostgreSQL, MongoDB, etc.)
-- An API for dynamic content
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+Analytics is configured in `app/layout.tsx` with tracking ID `G-RYYZFLSFTB`.
 
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
-
-## Acknowledgments
-
-- Movie data and images are for demonstration purposes
-- Built with love for movie enthusiasts everywhere
-- Special thanks to the Next.js and Tailwind CSS communities
-
----
-
-**Popcorn Rings** - Your go-to destination for movie reviews and box office insights. 🍿
