@@ -1,4 +1,6 @@
+import Image from 'next/image'
 import Link from 'next/link'
+import { getAssetPath } from '../utils/paths'
 
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl'
@@ -31,10 +33,14 @@ export default function Logo({
 
   const LogoContent = () => (
     <div className={`flex items-center gap-3 ${className}`}>
-      <img
-        src={rounded ? "/logo-round.png" : "/logo.png"}
+      <Image
+        src={rounded ? getAssetPath('/logo-round.png') : getAssetPath('/logo.png')}
         alt="Popcorn Rings Logo"
+        width={size === 'sm' ? 32 : size === 'md' ? 40 : size === 'lg' ? 48 : 64}
+        height={size === 'sm' ? 32 : size === 'md' ? 40 : size === 'lg' ? 48 : 64}
         className={`${sizeClasses[size]} object-contain`}
+        priority
+        unoptimized
       />
       {showText && (
         <span className={`font-bold text-popcorn-600 ${textSizes[size]}`}>
