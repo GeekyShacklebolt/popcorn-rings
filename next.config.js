@@ -2,6 +2,7 @@
 const nextConfig = {
   output: 'export',
   basePath: process.env.NODE_ENV === 'production' ? '/popcorn-rings' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/popcorn-rings' : '',
   images: {
     unoptimized: true
   }
