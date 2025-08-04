@@ -155,6 +155,24 @@ export default function ReviewPage({ params }: ReviewPageProps) {
             </div>
           </div>
 
+          {/* YouTube Video Embed */}
+          {post.videoUrl && (
+            <div className="mt-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Watch My Review</h2>
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+                  src={post.videoUrl}
+                  title={`${post.title} - Review Video`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+          )}
+
           {/* Back to Reviews */}
           <div className="mt-12">
             <Link
