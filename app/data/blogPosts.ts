@@ -24,12 +24,12 @@ export const blogPosts: BlogPost[] = [
     id: 1,
     title: "Mahavatar Narsimha",
     slug: "mahavatar-narsimha-2025",
-    rating: 9.6,
+    rating: 9.2,
     boxOffice: {
-      total: "44.5 Cr",
-      domestic: "44.5 Cr",
-      international: "TBD",
-      uptoWeek: 1
+    total: "267 Cr",
+    domestic: "228 Cr",
+    international: "22 Cr",
+    uptoWeek: 4
     },
     releaseDate: "2025-07-25",
     genre: "Action/Animation/Drama/Fantasy",
@@ -38,7 +38,14 @@ export const blogPosts: BlogPost[] = [
     image: "https://m.media-amazon.com/images/M/MV5BNzhkMjFhOTItMTczNi00YWM1LTlhZjItOTc4OTA0OWVhZTIzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     // image: "https://www.sacnilk.com/image/bunnyimagenews.php?newsid=1000023171",  // alternate image
     excerpt: "The demon Hiranyakashyap seeks revenge on Vishnu and declares himself a god. His son Prahlad remains devoted to Vishnu. Vishnu manifests as Narsimha to defeat the demon and restore balance.",
-    fullReview: "Mahavatar Narsimha is a groundbreaking animated film that brings the sacred story of Lord Narsimha to life with stunning visuals and emotional depth. Rooted in the teachings of the Srimad Bhagavatam, this film is not just cinema—it's a divine experience. The animation style, voice performances, and background score create an immersive journey of bhakti, dharma, and divine grace. The transformation scene where Narasimha emerges from the pillar is a cinematic masterpiece that sends shivers down the spine.",
+    fullReview: `
+        Mahavatar Narsimha is a groundbreaking animated film that brings the sacred story of Lord Narsimha to life with stunning visuals and emotional depth. Rooted in the teachings of the Srimad Bhagavatam, this film is not just cinema—it's a divine experience. The animation style, voice performances, and background score create an immersive journey of bhakti, dharma, and divine grace. The transformation scene where Narasimha emerges from the pillar is a cinematic masterpiece that sends shivers down the spine.
+        This animated mythological film, directed by Ashwin Kumar, has achieved outstanding success at the worldwide box office since its theatrical release on July 25, 2025. Here are the key details regarding its global earnings:
+        * Total Box Office: 267 Cr
+        * Domestic Box Office: 228 Cr
+        * International Box Office: 22 Cr
+        * Weeks in Theaters: 4
+    `,
     videoUrl: "https://www.youtube.com/embed/0yLQKJXkGFU?si=99SnnGB7VViBF3aQ"
   },
   // Add more blog posts here

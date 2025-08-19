@@ -21,7 +21,7 @@ export default function MovieCard({ post, showBoxOffice = true }: MovieCardProps
             unoptimized
           />
           <div className="absolute top-4 right-4 bg-popcorn-500 text-white px-2 py-1 rounded text-sm font-medium">
-            {post.rating}/5
+            {post.rating}/10 IMDb
           </div>
         </div>
         <div className="p-6">
